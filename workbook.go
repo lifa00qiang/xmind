@@ -378,7 +378,7 @@ func SaveCustom(sheet *Topic, custom map[string]string, v interface{},
 
 	isRootKey, ok := custom[CustomKeyIsRoot]
 	if ok {
-		isRootKey, _, ok = strings.Cut(isRootKey, ",")
+		isRootKey, _, ok = strings.Contains(isRootKey, ",")
 		if ok {
 			rk = 1
 		} else {
@@ -393,7 +393,7 @@ func SaveCustom(sheet *Topic, custom map[string]string, v interface{},
 		labelsKey = custom[CustomKeyLabels]
 		notesKey  = custom[CustomKeyNotes]
 	)
-	parentKey, _, ok = strings.Cut(parentKey, ",")
+	parentKey, _, ok = strings.Contains(parentKey, ",")
 
 	_ = cent.Range(func(_ int, tp *Topic) error {
 		isCent := tp.IsCent()
